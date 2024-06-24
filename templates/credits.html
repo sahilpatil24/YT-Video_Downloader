@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Check</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    />
+    <style>
+      .message {
+        display: none;
+        margin-top: 10px;
+        margin-left: 0.2rem;
+        margin-left: 0.2rem;
+        padding: 10px;
+        color: #fff;
+        background-color: rgba(58, 194, 53, 0.9);
+        border: 1px solid #e5e7eb;
+        border-radius: 4px;
+      }
+      .message-2 {
+        display: none;
+        margin-top: 10px;
+        margin-left: 0.2rem;
+        margin-left: 0.2rem;
+        padding: 10px;
+        color: #fff;
+        background-color: rgba(194, 53, 53, 0.9);
+        border: 1px solid #e5e7eb;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <nav
+    style="padding-left: 5%; margin: 0px"
+    class="bg-black text-white py-4 flex flex-row justify-between"
+  >
+    <a class="flex flex-row gap-2" href="{% url 'home' %}">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        fill="#fff"
+        viewBox="0 0 256 256"
+      >
+        <path
+          d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"
+        ></path>
+      </svg>
+      <p class="text-xl">YT Video Downloader</p>
+    </a>
+
+    <!-- <div style="margin-right: 5%">
+      <a href="{% url 'credits-page' %}" class="text-2xl">Credits</a>
+    </div> -->
+  </nav>
+  <body class="">
+    <div style="margin-left: 5%">
+      <form id="passwordForm" method="POST" class="mt-5 text-lg">
+        <div class="flex flex-col">
+          <label class="" for="password">Enter the password</label>
+          <input
+            class="border border-gray-300 md:w-1/4"
+            type="password"
+            name="password"
+            id="password"
+          />
+          <br />
+        </div>
+        <input
+          type="submit"
+          class="bg-black mt-0 text-white px-2 py-2 rounded-sm hover:bg-white sm:hover:bg-black"
+          value="Check"
+        />
+      </form>
+
+      <div id="successMessage" class="message w-full">
+        Password correct! Owner is
+        <a class="underline" href="https://www.instagram.com/slave.buyerr/"
+          >@slave.buyerr</a
+        >
+      </div>
+
+      <div id="failureMessage" class="message-2 w-full">
+        Password incorrect. Please try again.
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("passwordForm");
+      const successMessage = document.getElementById("successMessage");
+      const failureMessage = document.getElementById("failureMessage");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const passwordInput = document.getElementById("password").value.trim();
+
+        if (passwordInput === "Sahil") {
+          successMessage.style.display = "block";
+          failureMessage.style.display = "none";
+        } else {
+          successMessage.style.display = "none";
+          failureMessage.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>
